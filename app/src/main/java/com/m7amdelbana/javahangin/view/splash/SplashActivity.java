@@ -1,4 +1,4 @@
-package com.m7amdelbana.javahangin.view;
+package com.m7amdelbana.javahangin.view.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.m7amdelbana.javahangin.R;
 import com.m7amdelbana.javahangin.util.Utilities;
+import com.m7amdelbana.javahangin.view.auth.LoginActivity;
 import com.m7amdelbana.javahangin.view.main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {

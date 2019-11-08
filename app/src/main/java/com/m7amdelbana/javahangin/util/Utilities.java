@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 
 public class Utilities {
 
-    public static Utilities utilities = null;
+    private static Utilities utilities = null;
 
     public static Utilities shared() {
         if (utilities == null)
@@ -17,6 +17,7 @@ public class Utilities {
     public boolean isOnline(Context context) {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connectivityManager != null;
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }

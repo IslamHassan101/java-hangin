@@ -19,12 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.RegisterActivity"></activity>
+        <activity android:name=".view.auth.RegisterActivity"></activity>
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".view.auth.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.SplashActivity"
+            android:name=".view.splash.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

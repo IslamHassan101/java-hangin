@@ -1,4 +1,4 @@
-package com.m7amdelbana.javahangin.view;
+package com.m7amdelbana.javahangin.view.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 

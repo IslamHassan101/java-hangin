@@ -20,4 +20,6 @@
     <string name="create_account">Create account</string>
     <string name="home">Home</string>
     <string name="more">More</string>
+    <string name="booking">Booking</string>
+    <string name="nearby_places">Nearby Places</string>
 </resources>

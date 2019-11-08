@@ -1,4 +1,4 @@
-package com.m7amdelbana.javahangin.view;
+package com.m7amdelbana.javahangin.view.auth;
 
 import android.os.Bundle;
 import android.util.Patterns;
@@ -11,24 +11,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.m7amdelbana.javahangin.R;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class LoginActivity extends AppCompatActivity {
 
-    // @BindView(R.id.login_email_editText)
     EditText edtEmail;
-    // @BindView(R.id.login_password_editText)
     EditText edtPassword;
-    // @BindView(R.id.login_button)
     Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // ButterKnife.bind(this);
 
         edtEmail = findViewById(R.id.login_email_editText);
         edtPassword = findViewById(R.id.login_password_editText);
@@ -45,15 +37,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-//    @OnClick(R.id.login_button)
-//    public void onViewClicked() {
-//        String email = edtEmail.getText().toString().trim();
-//        String password = edtPassword.getText().toString().trim();
-//        if (valid(email, password)) {
-//            Toast.makeText(this, "Valid", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     private boolean valid(String email, String password) {
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
