@@ -2,6 +2,7 @@ package com.m7amdelbana.javahangin.view.main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -11,12 +12,15 @@ import android.app.FragmentTransaction;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.m7amdelbana.javahangin.R;
 import com.m7amdelbana.javahangin.view.main.navigation.BookingFragment;
-import com.m7amdelbana.javahangin.view.main.navigation.HomeFragment;
+import com.m7amdelbana.javahangin.view.main.navigation.home.HomeFragment;
 import com.m7amdelbana.javahangin.view.main.navigation.MapFragment;
 import com.m7amdelbana.javahangin.view.main.navigation.MoreFragment;
 
@@ -24,6 +28,9 @@ public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView navigationView;
+    private Toolbar toolbar;
+    private TextView tvToolbar;
+    private ImageView imgToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +38,22 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         initUI();
-        openFragment(new HomeFragment());
 
+        initToolbar();
+
+        openFragment(new HomeFragment());
+        tvToolbar.setText(R.string.home);
+
+        imgToolbar.setVisibility(View.GONE);
+    }
+
+    private void initToolbar() {
+        toolbar = findViewById(R.id.main_toolbar);
+        tvToolbar = findViewById(R.id.toolbar_title_textView);
+        imgToolbar = findViewById(R.id.toolbar_back_imageView);
+        setSupportActionBar(toolbar);
+
+        imgToolbar.setVisibility(View.GONE);
     }
 
     private void checkPermission() {
@@ -62,16 +83,20 @@ public class MainActivity extends AppCompatActivity
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
                 openFragment(new HomeFragment());
-                break;
+                tvToolbar.setText(R.string.home);
+                return true;
             case R.id.nav_booking:
                 openFragment(new BookingFragment());
-                break;
+                tvToolbar.setText(R.string.booking);
+                return true;
             case R.id.nav_map:
                 openFragment(new MapFragment());
-                break;
+                tvToolbar.setText(R.string.nearby_places);
+                return true;
             case R.id.nav_more:
                 openFragment(new MoreFragment());
-                break;
+                tvToolbar.setText(R.string.more);
+                return true;
         }
         return false;
     }

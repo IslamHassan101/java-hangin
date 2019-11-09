@@ -30,23 +30,16 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                goToMain();
+                goToLogin();
             }
         }, SPLASH_TIME_OUT);
     }
 
-    private void goToMain() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     private void goToLogin() {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
