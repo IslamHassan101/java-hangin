@@ -24,7 +24,7 @@
         <activity android:name=".view.place.PlaceActivity"></activity>
         <activity android:name=".view.auth.RegisterActivity" />
         <activity
-            android:name=".view.auth.LoginActivity"
+            android:name=".view.auth.login.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.splash.SplashActivity"

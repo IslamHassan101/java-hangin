@@ -19,9 +19,7 @@ import com.m7amdelbana.javahangin.view.place.PlaceActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment
-//        implements ItemAdapterClick
-{
+public class HomeFragment extends Fragment implements ItemAdapterClick {
 
     private RecyclerView recyclerView;
     private List<Place> places;
@@ -43,14 +41,10 @@ public class HomeFragment extends Fragment
             places.add(new Place("Place " + (i + 1), "https://picsum.photos/id/867/200/200", "Address " + (i + 1)));
         }
 
-        PlaceAdapter placeAdapter = new PlaceAdapter(places, getActivity().getApplicationContext(), new ItemAdapterClick() {
-            @Override
-            public void onClick(int position) {
-                Intent intent = new Intent(getActivity(), PlaceActivity.class);
-                intent.putExtra("PLACE", places.get(position));
-                getActivity().startActivity(intent);
-            }
-        });
+        PlaceAdapter placeAdapter =
+                new PlaceAdapter(places,
+                        getActivity().getApplicationContext(),
+                        this);
 
         GridLayoutManager gridLayoutManager = new
                 GridLayoutManager(getActivity().getApplicationContext(),
@@ -63,10 +57,10 @@ public class HomeFragment extends Fragment
         return view;
     }
 
-//    @Override
-//    public void onClick(int position) {
-//        Intent intent = new Intent(getActivity(), PlaceActivity.class);
-//        intent.putExtra("PLACE", places.get(position));
-//        getActivity().startActivity(intent);
-//    }
+    @Override
+    public void onClick(int position) {
+        Intent intent = new Intent(getActivity(), PlaceActivity.class);
+        intent.putExtra("PLACE", places.get(position));
+        getActivity().startActivity(intent);
+    }
 }
