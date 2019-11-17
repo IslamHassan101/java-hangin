@@ -9,8 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.m7amdelbana.javahangin.R;
-import com.m7amdelbana.javahangin.models.Place;
-import com.squareup.picasso.MemoryPolicy;
+import com.m7amdelbana.javahangin.network.models.Place;
 import com.squareup.picasso.Picasso;
 
 public class PlaceHolder extends RecyclerView.ViewHolder {

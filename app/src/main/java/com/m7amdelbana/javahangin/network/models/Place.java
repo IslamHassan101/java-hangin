@@ -1,4 +1,4 @@
-package com.m7amdelbana.javahangin.models;
+package com.m7amdelbana.javahangin.network.models;
 
 import java.io.Serializable;
 

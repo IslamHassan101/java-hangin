@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        PrefManager.isUserLogin(this, false);
+        PrefManager.isUserLogin(this, true);
 
         if (!Utilities.shared().isOnline(this)) {
             Toast.makeText(this, "No internet connection!",

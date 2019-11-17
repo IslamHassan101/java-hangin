@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.m7amdelbana.javahangin.R;
-import com.m7amdelbana.javahangin.models.Place;
+import com.m7amdelbana.javahangin.network.models.Place;
 
 public class PlaceActivity extends AppCompatActivity {
 

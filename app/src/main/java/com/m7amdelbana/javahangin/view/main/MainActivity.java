@@ -10,10 +10,8 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,7 +20,6 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.m7amdelbana.javahangin.R;
-import com.m7amdelbana.javahangin.util.LoadingDialog;
 import com.m7amdelbana.javahangin.view.main.navigation.BookingFragment;
 import com.m7amdelbana.javahangin.view.main.navigation.home.HomeFragment;
 import com.m7amdelbana.javahangin.view.main.navigation.MapFragment;
@@ -49,11 +46,6 @@ public class MainActivity extends AppCompatActivity
         tvToolbar.setText(R.string.home);
 
         imgToolbar.setVisibility(View.GONE);
-
-        LoadingDialog loadingDialog = new LoadingDialog(this);
-        loadingDialog.show();
-
-        new Handler().postDelayed(() -> loadingDialog.hide(), 5000);
     }
 
     private void initToolbar() {

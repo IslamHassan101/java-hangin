@@ -1,6 +1,15 @@
 package com.m7amdelbana.javahangin.view.auth.login;
 
-import android.os.Handler;
+import com.m7amdelbana.javahangin.network.api.APIClient;
+import com.m7amdelbana.javahangin.network.models.SignForm;
+import com.m7amdelbana.javahangin.network.service.APIInterface;
+
+import org.jetbrains.annotations.NotNull;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginInteractor {
 
@@ -13,19 +22,27 @@ public class LoginInteractor {
 
     void login(String email, String password,
                OnLoginFinishedListner onLoginFinishedListner) {
-        String defaultEmail = "user@gmail.com";
-        String defaultPassword = "123456";
 
-        new Handler().postDelayed(new Runnable() {
+        SignForm signForm = new SignForm(email, password);
+
+        APIInterface apiInterface =
+                APIClient.getClient().create(APIInterface.class);
+
+        apiInterface.login(signForm).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void run() {
-                if (email.equalsIgnoreCase(defaultEmail)
-                        && password.equals(defaultPassword)) {
+            public void onResponse(@NotNull Call<ResponseBody> call,
+                                   @NotNull Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
                     onLoginFinishedListner.onSuccess();
-                } else {
-                    onLoginFinishedListner.onError();
                 }
             }
-        }, 3000);
+
+            @Override
+            public void onFailure(@NotNull Call<ResponseBody> call,
+                                  @NotNull Throwable t) {
+                onLoginFinishedListner.onError();
+            }
+        });
+
     }
 }

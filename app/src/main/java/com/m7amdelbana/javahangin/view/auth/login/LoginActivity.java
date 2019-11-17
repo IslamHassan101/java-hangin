@@ -2,6 +2,7 @@ package com.m7amdelbana.javahangin.view.auth.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import com.m7amdelbana.javahangin.R;
 import com.m7amdelbana.javahangin.util.LoadingDialog;
 import com.m7amdelbana.javahangin.util.PrefManager;
 import com.m7amdelbana.javahangin.view.auth.RegisterActivity;
+import com.m7amdelbana.javahangin.view.main.MainActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -34,6 +36,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Log.v("CHECK_DIALIG", "setContentView");
+
         edtEmail = findViewById(R.id.login_email_editText);
         edtPassword = findViewById(R.id.login_password_editText);
         btnLogin = findViewById(R.id.login_button);
@@ -41,28 +45,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         loadingDialog = new LoadingDialog(this);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email = edtEmail.getText().toString().trim();
-                String password = edtPassword.getText().toString().trim();
-                loginPresenter.checkEmailAndPassword(email, password);
-            }
+        btnLogin.setOnClickListener(view -> {
+            String email = edtEmail.getText().toString().trim();
+            String password = edtPassword.getText().toString().trim();
+            loginPresenter.checkEmailAndPassword(email, password);
         });
-
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String email = edtEmail.getText().toString().trim();
-//                String password = edtPassword.getText().toString().trim();
-//                if (valid(email, password)) {
-//                    Toast.makeText(LoginActivity.this, "Valid", Toast.LENGTH_SHORT).show();
-//
-//                    // TODO: PrefManager.isUserLogin(this, false);
-//                }
-//            }
-//        });
-
 
         tvSignUp.setOnClickListener(view -> goToRegister());
 
@@ -95,7 +82,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void validCradintial() {
-        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show();
+        goToMain();
     }
 
     @Override
@@ -103,26 +91,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
 
     }
-//    private boolean valid(String email, String password) {
-//        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-//
-//        if (email.isEmpty()) {
-//            edtEmail.setError("Enter email");
-//            return false;
-//        } else if (password.isEmpty()) {
-//            edtPassword.setError("Enter password");
-//            return false;
-//        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//            edtEmail.setError("Invalid email");
-//            return false;
-//        } else if (!email.matches(emailPattern)) {
-//            edtEmail.setError("Invalid email");
-//            return false;
-//        } else if (password.length() < 6) {
-//            edtPassword.setError("Invalid password");
-//            return false;
-//        }
-//
-//        return true;
-//    }
+
+    private void goToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
